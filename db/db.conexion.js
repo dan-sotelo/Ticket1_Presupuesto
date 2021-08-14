@@ -1,5 +1,5 @@
 // Importar los modulos necesarios
-const Sequelize = require('sequelize');
+const {Sequelize,DataTypes,Model} = require('sequelize');
 
 // Realizar la conexión con la base de datos
 const sequelize = new Sequelize(process.env.DB_NAME, null, null, {

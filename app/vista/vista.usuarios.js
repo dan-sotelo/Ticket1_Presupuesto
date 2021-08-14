@@ -1,5 +1,6 @@
 // Importar los mudulos necesarios a utilizar
 const controladorUsuarios = require('../controlador/controlador.usuarios');
+const middUsuarios = require('../../middlewares/midd.usuarios');
 
 // Definir los endpoints y exportar los modulos
 module.exports = async(app) => {
@@ -19,9 +20,9 @@ module.exports = async(app) => {
     app.post('/usuarios/iniciar_sesion', async(req, res)=>{
         let usuario = req.body;
         try {
-            let revisarIngreso = await controladorUsuarios.buscarUsuario(usuario);
-            if(revisarIngreso){
-                let token = await controladorUsuarios.generarToken();
+            let infoUsuario = await controladorUsuarios.buscarUsuario(usuario);
+            if(infoUsuario != null){
+                let token = await controladorUsuarios.generarToken(infoUsuario);
                 res.status(200).json({message: 'El usuario es valido', token});
             }
         } catch (error) {
@@ -30,7 +31,7 @@ module.exports = async(app) => {
         }
     })
 
-    // Endpoint para camciar la contraseña de usuario
+    // Endpoint para cambiar la contraseña de usuario
     app.patch('/usuarios/cambiar_password', async(req, res)=>{
         let usuario = req.body
         try{
@@ -43,7 +44,7 @@ module.exports = async(app) => {
     })
 
     // Endpoint solo para ver la lista de usuarios
-    app.get('/usuarios', async(req, res) =>{
+    app.get('/usuarios', middUsuarios.validarUsuario, middUsuarios.validarAccesoUsuario , async(req, res) =>{
         try {
             let usuarios = await controladorUsuarios.listarUsuarios();
             res.status(200).json({message: 'Consulta exitosa', usuarios});

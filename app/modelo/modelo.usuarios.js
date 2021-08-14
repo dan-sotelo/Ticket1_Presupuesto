@@ -1,5 +1,6 @@
 // Importar los mudulos necesarios a utilizar
 const Usuarios = require('../../db/db.modelo.usuarios');
+const bcrypt = require('bcrypt');
 
 // Definir los modulos
 let nuevoRegistro = async(usuario) =>{
@@ -11,7 +12,8 @@ let nuevoRegistro = async(usuario) =>{
                 apellidos: usuario.apellidos,
                 correo: usuario.correo,
                 password: usuario.password,
-                estado: usuario.estado
+                estado: usuario.estado,
+                id_tipo_usuario: usuario.id_tipo_usuario
             });
             return nuevoUsuario;
         } else {
@@ -25,11 +27,11 @@ let nuevoRegistro = async(usuario) =>{
 
 let buscarUsuario = async(usuario) =>{
     try {
-        let existeUsuario = await Usuarios.findOne({where: {correo: `${usuario.correo}`}});
-        if(existeUsuario != null){
-            let validacionPass = await Usuarios.findOne({where: {password: `${usuario.password}`, correo: `${usuario.correo}`}});
-            if(validacionPass != null){
-                return true;
+        let infoUsuario = await Usuarios.findOne({where: {correo: `${usuario.correo}`}});
+        if(infoUsuario != null){
+            let validacionPass = await bcrypt.compare(usuario.password,infoUsuario.password);
+            if(validacionPass){
+                return infoUsuario;
             } else {
                 console.log('La contraseña es incorrecta');
                 throw new Error('La contraseña es incorrecta');
@@ -46,10 +48,11 @@ let buscarUsuario = async(usuario) =>{
 
 let cambiarPassword = async(usuario) =>{
     try {
-        let existeUsuario = await Usuarios.findOne({where: {correo: `${usuario.correo}`}});
-        if(existeUsuario != null){
-            let validarPasswordActual = await Usuarios.findOne({where: {password: `${usuario.actualPassword}`, correo: `${usuario.correo}`}});
-            if(validarPasswordActual != null){
+        let usuarioExistente = await Usuarios.findOne({where: {correo: `${usuario.correo}`}});
+        if(usuarioExistente != null){
+            // let validarPasswordActual = await Usuarios.findOne({where: {password: `${usuario.actualPassword}`, correo: `${usuario.correo}`}});
+            let validarPasswordActual = await bcrypt.compare(usuario.actualPassword,usuarioExistente.password);
+            if(validarPasswordActual){
                 let nuevaPassword = await Usuarios.update({password: `${usuario.nuevaPassword}`}, {where: {correo: `${usuario.correo}`}});
             } else {
                 console.log('Contraseña invalida');

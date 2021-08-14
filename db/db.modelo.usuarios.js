@@ -1,6 +1,7 @@
 // Importar los mudulos necesarios a utilizar
-const DataTypes = require('sequelize');
+const {DataTypes, Model} = require('sequelize');
 const sequelize = require('./db.conexion');
+const TipoUsuarios = require('./db.modelo.tipoUsuarios');
 
 // Definir el modelo de la tabla para la DB
 const Usuarios = sequelize.define('usuarios',{
@@ -23,11 +24,15 @@ const Usuarios = sequelize.define('usuarios',{
         allowNull: true
     },
     password:{
-        type: DataTypes.STRING(15),
+        type: DataTypes.STRING(100),
         alowNull: false
     },
     estado:{
         type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    id_tipo_usuario:{
+        type: DataTypes.INTEGER,
         allowNull: false
     }
 }, {
@@ -35,6 +40,7 @@ const Usuarios = sequelize.define('usuarios',{
     createdAt: 'fecha_registro',
     updatedAt: 'fecha_actualizacion'
 });
+Usuarios.belongsTo(TipoUsuarios,{foreignKey: 'id_tipo_usuario'});
 
 // Exportar el modelo
 module.exports = Usuarios;

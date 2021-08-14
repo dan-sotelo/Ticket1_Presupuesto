@@ -4,10 +4,9 @@ const app = express();
 require('dotenv').config();
 const cors = require('cors');
 const middUsuarios = require('./middlewares/midd.usuarios');
-
 const sequelize = require('./db/db.conexion');
 const Usuarios = require('./db/db.modelo.usuarios');
-
+const TipoUsuarios = require('./db/db.modelo.tipoUsuarios');
 const vistaApp = require('./app/vista/vista.app');
 const vistaUsuarios = require('./app/vista/vista.usuarios');
 
@@ -24,6 +23,7 @@ app.set('views', __dirname + '/views');
 // Inicializar el servidor
 const iniciarServidor = async() =>{
     try {
+        await TipoUsuarios.sync();
         await Usuarios.sync();
         await sequelize.authenticate();
         console.log('Se establecio una conexión exitosa con la DB');
