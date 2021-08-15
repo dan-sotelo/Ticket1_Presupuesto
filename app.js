@@ -4,9 +4,22 @@ const app = express();
 require('dotenv').config();
 const cors = require('cors');
 const middUsuarios = require('./middlewares/midd.usuarios');
+
 const sequelize = require('./db/db.conexion');
-const Usuarios = require('./db/db.modelo.usuarios');
 const TipoUsuarios = require('./db/db.modelo.tipoUsuarios');
+const Usuarios = require('./db/db.modelo.usuarios');
+const Presupuestos = require('./db/db.modelo.presupuestos');
+const VersionesPresupuestos = require('./db/db.modelo.versionesPresupuestos');
+const ConceptoCostosAdministrativos = require('./db/db.modelo.conceptoCostosAdministrativos');
+const ConceptoCostosDirectos = require('./db/db.modelo.conceptoCostosDirectos');
+const ConceptoIngresos = require('./db/db.modelo.conceptoIngresos');
+const RolRecursos = require('./db/db.modelo.rolRecusos');
+const Periodos = require('./db/db.modelo.periodos');
+const Ingresos = require('./db/db.modelo.ingresos');
+const CostosDirectos = require('./db/db.modelo.costosDirectos');
+const CostosAdministrativos = require('./db/db.modelo.costosAdministrativos');
+const PorcentajeRecursos = require('./db/db.modelo.porcentajeRecursos');
+
 const vistaApp = require('./app/vista/vista.app');
 const vistaUsuarios = require('./app/vista/vista.usuarios');
 
@@ -25,6 +38,17 @@ const iniciarServidor = async() =>{
     try {
         await TipoUsuarios.sync();
         await Usuarios.sync();
+        await Presupuestos.sync();
+        await VersionesPresupuestos.sync();
+        await ConceptoCostosAdministrativos.sync();
+        await ConceptoCostosDirectos.sync();
+        await ConceptoIngresos.sync();
+        await RolRecursos.sync();
+        await Periodos.sync();
+        await Ingresos.sync();
+        await CostosDirectos.sync();
+        await CostosAdministrativos.sync();
+        await PorcentajeRecursos.sync();
         await sequelize.authenticate();
         console.log('Se establecio una conexión exitosa con la DB');
         app.listen(process.env.PORT, () =>{

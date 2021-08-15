@@ -5,7 +5,7 @@ const middUsuarios = require('../../middlewares/midd.usuarios');
 // Definir los endpoints y exportar los modulos
 module.exports = async(app) => {
     // Endpoint para el registro de usuarios
-    app.post('/usuarios/nuevo_registro', async(req, res)=>{
+    app.post('/usuarios/nuevo_registro', middUsuarios.datosRegistro, async(req, res)=>{
         let usuario = req.body;
         try {
             let nuevoUsuario = await controladorUsuarios.nuevoRegistro(usuario);
@@ -17,7 +17,7 @@ module.exports = async(app) => {
     })
 
     // Endpoint para el ingreso de usuarios
-    app.post('/usuarios/iniciar_sesion', async(req, res)=>{
+    app.post('/usuarios/iniciar_sesion', middUsuarios.datosIniciarSesion, async(req, res)=>{
         let usuario = req.body;
         try {
             let infoUsuario = await controladorUsuarios.buscarUsuario(usuario);
