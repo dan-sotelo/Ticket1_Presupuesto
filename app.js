@@ -8,8 +8,8 @@ const middUsuarios = require('./middlewares/midd.usuarios');
 const sequelize = require('./db/db.conexion');
 const TipoUsuarios = require('./db/db.modelo.tipoUsuarios');
 const Usuarios = require('./db/db.modelo.usuarios');
-const Presupuestos = require('./db/db.modelo.presupuestos');
-const VersionesPresupuestos = require('./db/db.modelo.versionesPresupuestos');
+const Proyectos = require('./db/db.modelo.proyectos');
+const VersionPresupuestos = require('./db/db.modelo.versionesPresupuestos');
 const ConceptoCostosAdministrativos = require('./db/db.modelo.conceptoCostosAdministrativos');
 const ConceptoCostosDirectos = require('./db/db.modelo.conceptoCostosDirectos');
 const ConceptoIngresos = require('./db/db.modelo.conceptoIngresos');
@@ -38,8 +38,8 @@ const iniciarServidor = async() =>{
     try {
         await TipoUsuarios.sync();
         await Usuarios.sync();
-        await Presupuestos.sync();
-        await VersionesPresupuestos.sync();
+        await Proyectos.sync();
+        await VersionPresupuestos.sync();
         await ConceptoCostosAdministrativos.sync();
         await ConceptoCostosDirectos.sync();
         await ConceptoIngresos.sync();

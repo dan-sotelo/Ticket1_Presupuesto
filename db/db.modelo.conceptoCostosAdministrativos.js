@@ -4,13 +4,13 @@ const sequelize = require('./db.conexion');
 
 // Definir el modelo de la tabla para la DB
 const ConceptoCostosAdministrativos = sequelize.define('concepto_costos_administrativos',{
-    id_concepto_costos_administrativos: {
+    id_concepto: {
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    concepto_costos_administrativos: {
+    concepto_costo_administrativo: {
         type: DataTypes.STRING(150),
         allowNull: false
     }

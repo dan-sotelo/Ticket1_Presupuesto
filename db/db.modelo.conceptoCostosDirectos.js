@@ -4,7 +4,7 @@ const sequelize = require('./db.conexion');
 
 // Definir el modelo de la tabla para la DB
 const ConceptoCostosDirectos = sequelize.define('concepto_costos_directos',{
-    id_concepto_costos_directos: {
+    id_concepto: {
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.INTEGER,

@@ -2,10 +2,10 @@
 const {DataTypes, Model} = require('sequelize');
 const sequelize = require('./db.conexion');
 const Usuarios = require('./db.modelo.usuarios');
-const Presupuestos = require('./db.modelo.presupuestos');
+const Proyectos = require('./db.modelo.proyectos');
 
 // Definir el modelo de la tabla para la DB
-const VersionesPresupuestos = sequelize.define('versiones_de_presupuestos',{
+const VersionPresupuestos = sequelize.define('version_de_presupuestos',{
     id_version_presupuesto:{
         primaryKey: true,
         autoIncrement: true,
@@ -16,7 +16,7 @@ const VersionesPresupuestos = sequelize.define('versiones_de_presupuestos',{
         type: DataTypes.STRING(5),
         allowNull: false
     },
-    id_presupuesto:{
+    id_proyecto:{
         type: DataTypes.INTEGER,
         allowNull: false
     },
@@ -26,12 +26,12 @@ const VersionesPresupuestos = sequelize.define('versiones_de_presupuestos',{
     }
 }, {
     timestamps: true,
-    createdAt: 'fecha_registro',
+    createdAt: 'fecha_creacion',
     updatedAt: 'fecha_actualizacion'
 });
 
-VersionesPresupuestos.belongsTo(Presupuestos,{foreignKey: 'id_presupuesto'});
-VersionesPresupuestos.belongsTo(Usuarios,{foreignKey: 'id_usuario'});
+VersionPresupuestos.belongsTo(Proyectos,{foreignKey: 'id_proyecto'});
+VersionPresupuestos.belongsTo(Usuarios,{foreignKey: 'id_usuario'});
 
 // Exportar el modelo
-module.exports = VersionesPresupuestos;
+module.exports = VersionPresupuestos;

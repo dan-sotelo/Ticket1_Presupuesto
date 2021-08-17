@@ -2,7 +2,7 @@
 const {DataTypes, Model} = require('sequelize');
 const sequelize = require('./db.conexion');
 const ConceptoCostosAdministrativos = require('./db.modelo.conceptoCostosAdministrativos');
-const VersionesPresupuestos = require('./db.modelo.versionesPresupuestos');
+const VersionPresupuestos = require('./db.modelo.versionesPresupuestos');
 const Periodos = require('./db.modelo.periodos');
 
 // Definir el modelo de la tabla para la DB
@@ -37,7 +37,7 @@ const CostosAdministrativos = sequelize.define('costos_administrativos',{
 
 CostosAdministrativos.belongsTo(ConceptoCostosAdministrativos,{foreignKey: 'id_concepto_costos_administrativos'});
 CostosAdministrativos.belongsTo(Periodos,{foreignKey: 'id_periodo'});
-CostosAdministrativos.belongsTo(VersionesPresupuestos,{foreignKey: 'id_version_presupuesto'});
+CostosAdministrativos.belongsTo(VersionPresupuestos,{foreignKey: 'id_version_presupuesto'});
 
 // Exportar el modelo
 module.exports = CostosAdministrativos;

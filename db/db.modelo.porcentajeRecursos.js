@@ -2,7 +2,7 @@
 const {DataTypes, Model} = require('sequelize');
 const sequelize = require('./db.conexion');
 const RolRecursos = require('./db.modelo.rolRecusos');
-const VersionesPresupuestos = require('./db.modelo.versionesPresupuestos');
+const VersionPresupuestos = require('./db.modelo.versionesPresupuestos');
 const Periodos = require('./db.modelo.periodos');
 
 // Definir el modelo de la tabla para la DB
@@ -37,7 +37,7 @@ const PorcentajeRecursos = sequelize.define('porcentaje_recursos',{
 
 PorcentajeRecursos.belongsTo(RolRecursos,{foreignKey: 'id_rol_recurso'});
 PorcentajeRecursos.belongsTo(Periodos,{foreignKey: 'id_periodo'});
-PorcentajeRecursos.belongsTo(VersionesPresupuestos,{foreignKey: 'id_version_presupuesto'});
+PorcentajeRecursos.belongsTo(VersionPresupuestos,{foreignKey: 'id_version_presupuesto'});
 
 // Exportar el modelo
 module.exports = PorcentajeRecursos;

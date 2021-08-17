@@ -4,7 +4,7 @@ const sequelize = require('./db.conexion');
 
 // Definir el modelo de la tabla para la DB
 const ConceptoIngresos = sequelize.define('concepto_ingresos',{
-    id_concepto_ingresos: {
+    id_concepto: {
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.INTEGER,

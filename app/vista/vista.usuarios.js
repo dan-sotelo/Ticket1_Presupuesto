@@ -9,7 +9,7 @@ module.exports = async(app) => {
         let usuario = req.body;
         try {
             let nuevoUsuario = await controladorUsuarios.nuevoRegistro(usuario);
-            res.status(200).json({message: 'Registro de usuario exitoso', nuevoUsuario})
+            res.status(200).json({message: 'Registro de usuario exitoso'})
         } catch (error) {
             console.log(error.message);
             res.status(500).json({message: error.message});

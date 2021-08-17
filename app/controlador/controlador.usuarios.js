@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 // Definir los modulos
 let nuevoRegistro = async(usuario) =>{
     try {
-        usuario.estado = true;
+        usuario.activo = true;
         usuario.id_tipo_usuario = 2;
         let encriptacion = await bcrypt.genSalt(10);
         usuario.password = await bcrypt.hash(usuario.password,encriptacion);

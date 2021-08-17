@@ -27,7 +27,7 @@ const Usuarios = sequelize.define('usuarios',{
         type: DataTypes.STRING(100),
         alowNull: false
     },
-    estado:{
+    activo:{
         type: DataTypes.BOOLEAN,
         allowNull: false
     },

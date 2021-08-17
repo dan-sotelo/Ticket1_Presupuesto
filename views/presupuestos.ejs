@@ -1,0 +1,92 @@
+<%- include('template/cabecera', {tituloWeb: 'Presupuestos'}); %>
+</head>
+<body>
+    <div class="container">
+        <h2>1. Resumen Financiero</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="ResumenFinanciero">
+                <thead>
+                  <tr>
+                    <th scope="col">Ventas</th>
+                    <th scope="col">Costos</th>
+                    <th scope="col">Margen</th>
+                    <th scope="col">Porcentaje</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Resultado_ventas</th>
+                    <td scope="row">Resultado_costos</td>
+                    <td scope="row">Diferencia</td>
+                    <td scope="row">Margen/Ventas</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Templates -->
+              <template id="template-ResumenFinanciero">
+                <tr>
+                    <th scope="row">1</th>
+                    <td scope="row">Mark</td>
+                    <td scope="row">Otto</td>
+                    <td scope="row">@mdo</td>
+                  </tr>
+              </template>
+        </div>
+
+        <h2>2. Flujo de efectivo</h2>
+        <button type="button" onclick="agregarColumnas()">Agregar</button>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="ResumenFinanciero">
+                <thead>
+                  <tr id="ColumnasHead">
+                    <th>Titulos/mes</th>
+                    <!-- Datos dinamicos -->
+                      <template id="Periodos">
+                        <th class="Mes">Mes</th>
+                      </template>
+                    <th id="sumatoriaTotal">Sumatoria Total</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr id="datosIngresos">
+                    <th>Ingresos</th>
+                      <template id="Ingresos">
+                        <!-- Datos Dinamicos -->
+                        <td>Ingresos por fecha</td>
+                      </template>
+                    <td id="sumaIngresos">Total Ingresos</td>
+                  </tr>
+
+                  <tr id="datosEgresos">
+                    <th>Egresos</th>
+                      <template id="Egresos">
+                        <!-- Datos Dinamicos -->
+                        <td>Egresos por fecha</td>
+                      </template>
+                    <td id="sumaEgresos">Total Egresos</td>
+                  </tr>
+
+                  <tr id="datosTotal">
+                    <th>Total</th>
+                      <template id="Total">
+                        <!-- Datos Dinamicos -->
+                        <td>Total por fecha</td>
+                      </template>
+                    <td id="sumaTotal">Sumatoria total</td>
+                  </tr>
+
+                  <tr id="datosTotalAcumulado">
+                    <th>Total acumulado</th>
+                      <template id="TotalAcumulado">
+                        <!-- Datos Dinamicos -->
+                        <td>Total acumulado por fecha</td>
+                      </template>
+                    <td id="sumaTotalAcumulado"></td>
+                  </tr>
+                </tbody>
+              </table>
+    </div>
+    <script src="/js/presupuestos.js"></script>
+<%- include('template/pie_de_pagina'); %>

@@ -1,7 +1,7 @@
 // Importar los mudulos necesarios a utilizar
 const {DataTypes, Model} = require('sequelize');
 const sequelize = require('./db.conexion');
-const VersionesPresupuestos = require('./db.modelo.versionesPresupuestos');
+const VersionPresupuestos = require('./db.modelo.versionesPresupuestos');
 
 // Definir el modelo de la tabla para la DB
 const Periodos = sequelize.define('periodos',{
@@ -24,7 +24,7 @@ const Periodos = sequelize.define('periodos',{
     createdAt: 'fecha_registro',
     updatedAt: 'fecha_actualizacion'
 });
-Periodos.belongsTo(VersionesPresupuestos,{foreignKey: 'id_version_presupuesto'});
+Periodos.belongsTo(VersionPresupuestos,{foreignKey: 'id_version_presupuesto'});
 
 // Exportar el modelo
 module.exports = Periodos;

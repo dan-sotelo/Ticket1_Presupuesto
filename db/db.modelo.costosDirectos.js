@@ -2,7 +2,7 @@
 const {DataTypes, Model} = require('sequelize');
 const sequelize = require('./db.conexion');
 const ConceptoCostosDirectos = require('./db.modelo.conceptoCostosDirectos');
-const VersionesPresupuestos = require('./db.modelo.versionesPresupuestos');
+const VersionPresupuestos = require('./db.modelo.versionesPresupuestos');
 const Periodos = require('./db.modelo.periodos');
 
 // Definir el modelo de la tabla para la DB
@@ -37,7 +37,7 @@ const CostosDirectos = sequelize.define('costos_directos',{
 
 CostosDirectos.belongsTo(ConceptoCostosDirectos,{foreignKey: 'id_concepto_costos_directo'});
 CostosDirectos.belongsTo(Periodos,{foreignKey: 'id_periodo'});
-CostosDirectos.belongsTo(VersionesPresupuestos,{foreignKey: 'id_version_presupuesto'});
+CostosDirectos.belongsTo(VersionPresupuestos,{foreignKey: 'id_version_presupuesto'});
 
 // Exportar el modelo
 module.exports = CostosDirectos;
