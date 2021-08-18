@@ -72,6 +72,7 @@ let datosIniciarSesion = async (req, res, next) =>{
 let datosRegistro = async(req, res, next) =>{
     try {
         await Joi.attempt(req.body, modeloRegistro)
+        next()
     } catch (error) {
         res.status(400).json({message: 'Acceso denegado: Alguno de los campos cumple con los estandares'});
     }

@@ -35,7 +35,7 @@ const CostosDirectos = sequelize.define('costos_directos',{
     updatedAt: 'fecha_actualizacion'
 });
 
-CostosDirectos.belongsTo(ConceptoCostosDirectos,{foreignKey: 'id_concepto_costos_directo'});
+CostosDirectos.belongsTo(ConceptoCostosDirectos,{foreignKey: 'id_concepto_costos_directos'});
 CostosDirectos.belongsTo(Periodos,{foreignKey: 'id_periodo'});
 CostosDirectos.belongsTo(VersionPresupuestos,{foreignKey: 'id_version_presupuesto'});
 

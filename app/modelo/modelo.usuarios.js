@@ -12,7 +12,7 @@ let nuevoRegistro = async(usuario) =>{
                 apellidos: usuario.apellidos,
                 correo: usuario.correo,
                 password: usuario.password,
-                estado: usuario.estado,
+                activo: usuario.activo,
                 id_tipo_usuario: usuario.id_tipo_usuario
             });
             return nuevoUsuario;
@@ -50,7 +50,6 @@ let cambiarPassword = async(usuario) =>{
     try {
         let usuarioExistente = await Usuarios.findOne({where: {correo: `${usuario.correo}`}});
         if(usuarioExistente != null){
-            // let validarPasswordActual = await Usuarios.findOne({where: {password: `${usuario.actualPassword}`, correo: `${usuario.correo}`}});
             let validarPasswordActual = await bcrypt.compare(usuario.actualPassword,usuarioExistente.password);
             if(validarPasswordActual){
                 let nuevaPassword = await Usuarios.update({password: `${usuario.nuevaPassword}`}, {where: {correo: `${usuario.correo}`}});

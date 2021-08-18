@@ -34,6 +34,7 @@ let buscarUsuario = async(usuario) =>{
 
 let generarToken = async(infoUsuario) =>{
     let usuario = {
+        id_usuario: infoUsuario.id_usuario,
         correo: infoUsuario.correo,
         tipoUsuario: infoUsuario.id_tipo_usuario
     };

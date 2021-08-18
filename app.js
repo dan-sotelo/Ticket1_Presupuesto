@@ -22,6 +22,7 @@ const PorcentajeRecursos = require('./db/db.modelo.porcentajeRecursos');
 
 const vistaApp = require('./app/vista/vista.app');
 const vistaUsuarios = require('./app/vista/vista.usuarios');
+const vistaPresupuestos = require('./app/vista/vista.presupuestos');
 
 // Middlewares globales
 app.use(express.json());
@@ -64,3 +65,4 @@ iniciarServidor();
 // Inicializar las rutas del servidor
 vistaApp(app);
 vistaUsuarios(app);
+vistaPresupuestos(app);

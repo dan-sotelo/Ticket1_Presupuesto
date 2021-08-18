@@ -2,21 +2,15 @@
 const Periodos = require('../../db/db.modelo.periodos');
 
 // Definir los modulos
-let registrarPeriodos= async(periodos) =>{
+let registrarPeriodos = async(periodo, idPresupuesto) =>{
     try {
-        let i = 0;
-        for(periodo in periodos){
-            let existePeriodo = await Periodos.findOne({where: `${periodos.periodo}`});
-            if (existePeriodo == null){
-                await Periodos.create({
-                    periodo: periodos.periodos,
-                    id_version_presupuesto: periodo.id_version_presupuesto
-                })
-                i++;
-            }
-        }
-        if(i==0){
-            throw new Error('Todos los periodos ya estan registrados')
+        let periodoRegistrado = await Periodos.findOne({where: {periodo: `${periodo}`,id_version_presupuesto: `${idPresupuesto}`}});
+        if (periodoRegistrado == null){
+            let nuevoPeriodo = await Periodos.create({
+                periodo: periodo,
+                id_version_presupuesto: idPresupuesto
+            })
+            return nuevoPeriodo;
         }
     } catch (error) {
         console.log(`Error en el modelo al registrar los periodos: ${error}`);
@@ -25,4 +19,4 @@ let registrarPeriodos= async(periodos) =>{
 }
 
 // Exportar modulos
-module.exports = registrarPeriodos;
+module.exports = {registrarPeriodos};
