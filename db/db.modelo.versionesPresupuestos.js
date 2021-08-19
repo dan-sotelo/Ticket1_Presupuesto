@@ -16,6 +16,10 @@ const VersionPresupuestos = sequelize.define('version_de_presupuestos',{
         type: DataTypes.STRING(5),
         allowNull: false
     },
+    activo:{
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
     id_proyecto:{
         type: DataTypes.INTEGER,
         allowNull: false
@@ -29,9 +33,11 @@ const VersionPresupuestos = sequelize.define('version_de_presupuestos',{
     createdAt: 'fecha_creacion',
     updatedAt: 'fecha_actualizacion'
 });
-
 VersionPresupuestos.belongsTo(Proyectos,{foreignKey: 'id_proyecto'});
+Proyectos.hasMany(VersionPresupuestos,{foreignKey: 'id_proyecto'});
+
 VersionPresupuestos.belongsTo(Usuarios,{foreignKey: 'id_usuario'});
+Usuarios.hasMany(VersionPresupuestos,{foreignKey: 'id_usuario'});
 
 // Exportar el modelo
 module.exports = VersionPresupuestos;

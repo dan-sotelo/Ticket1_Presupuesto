@@ -34,10 +34,14 @@ const CostosDirectos = sequelize.define('costos_directos',{
     createdAt: 'fecha_registro',
     updatedAt: 'fecha_actualizacion'
 });
-
 CostosDirectos.belongsTo(ConceptoCostosDirectos,{foreignKey: 'id_concepto_costos_directos'});
+ConceptoCostosDirectos.hasMany(CostosDirectos,{foreignKey: 'id_concepto_costos_directos'});
+
 CostosDirectos.belongsTo(Periodos,{foreignKey: 'id_periodo'});
+Periodos.hasMany(CostosDirectos,{foreignKey: 'id_periodo'});
+
 CostosDirectos.belongsTo(VersionPresupuestos,{foreignKey: 'id_version_presupuesto'});
+VersionPresupuestos.hasMany(CostosDirectos,{foreignKey: 'id_version_presupuesto'})
 
 // Exportar el modelo
 module.exports = CostosDirectos;

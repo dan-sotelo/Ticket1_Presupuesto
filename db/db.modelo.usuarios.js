@@ -41,6 +41,7 @@ const Usuarios = sequelize.define('usuarios',{
     updatedAt: 'fecha_actualizacion'
 });
 Usuarios.belongsTo(TipoUsuarios,{foreignKey: 'id_tipo_usuario'});
+TipoUsuarios.hasMany(Usuarios,{foreignKey: 'id_tipo_usuario'});
 
 // Exportar el modelo
 module.exports = Usuarios;

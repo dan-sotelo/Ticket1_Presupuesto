@@ -36,8 +36,13 @@ const Ingresos = sequelize.define('ingresos',{
 });
 
 Ingresos.belongsTo(ConceptoIngresos,{foreignKey: 'id_concepto_ingresos'});
+ConceptoIngresos.hasMany(Ingresos,{foreignKey: 'id_concepto_ingresos'});
+
 Ingresos.belongsTo(Periodos,{foreignKey: 'id_periodo'});
+Periodos.hasMany(Ingresos,{foreignKey: 'id_periodo'});
+
 Ingresos.belongsTo(VersionPresupuestos,{foreignKey: 'id_version_presupuesto'});
+VersionPresupuestos.hasMany(Ingresos,{foreignKey: 'id_version_presupuesto'});
 
 // Exportar el modelo
 module.exports = Ingresos;

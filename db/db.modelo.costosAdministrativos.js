@@ -34,10 +34,14 @@ const CostosAdministrativos = sequelize.define('costos_administrativos',{
     createdAt: 'fecha_registro',
     updatedAt: 'fecha_actualizacion'
 });
-
 CostosAdministrativos.belongsTo(ConceptoCostosAdministrativos,{foreignKey: 'id_concepto_costos_administrativos'});
+ConceptoCostosAdministrativos.hasMany(CostosAdministrativos,{foreignKey: 'id_concepto_costos_administrativos'});
+
 CostosAdministrativos.belongsTo(Periodos,{foreignKey: 'id_periodo'});
+Periodos.hasMany(CostosAdministrativos,{foreignKey: 'id_periodo'});
+
 CostosAdministrativos.belongsTo(VersionPresupuestos,{foreignKey: 'id_version_presupuesto'});
+VersionPresupuestos.hasMany(CostosAdministrativos,{foreignKey: 'id_version_presupuesto'});
 
 // Exportar el modelo
 module.exports = CostosAdministrativos;

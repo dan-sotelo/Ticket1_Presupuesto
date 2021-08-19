@@ -26,6 +26,7 @@ let registrarVersion = async(proyecto,version,usuarioEditor) =>{
         if (versionPresupuestoRegistrado == null){
             let nuevaVersion = await VersionPresupuestos.create({
                 version: version,
+                activo: true,
                 id_proyecto: proyecto,
                 id_usuario: usuarioEditor
             });

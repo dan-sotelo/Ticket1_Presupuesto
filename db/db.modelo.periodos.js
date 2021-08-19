@@ -25,6 +25,7 @@ const Periodos = sequelize.define('periodos',{
     updatedAt: 'fecha_actualizacion'
 });
 Periodos.belongsTo(VersionPresupuestos,{foreignKey: 'id_version_presupuesto'});
+VersionPresupuestos.hasMany(Periodos,{foreignKey: 'id_version_presupuesto'});
 
 // Exportar el modelo
 module.exports = Periodos;
