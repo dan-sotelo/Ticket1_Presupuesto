@@ -4,6 +4,7 @@ const app = express();
 require('dotenv').config();
 const cors = require('cors');
 const middUsuarios = require('./middlewares/midd.usuarios');
+const servicioUsuarios = require('./db/db.servicios.tipoUsuarios');
 
 const sequelize = require('./db/db.conexion');
 const TipoUsuarios = require('./db/db.modelo.tipoUsuarios');
@@ -39,6 +40,7 @@ const iniciarServidor = async() =>{
     try {
         await TipoUsuarios.sync();
         await Usuarios.sync();
+        await servicioUsuarios.registrarTipoUsuarios();
         await Proyectos.sync();
         await VersionPresupuestos.sync();
         await ConceptoCostosAdministrativos.sync();
