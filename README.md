@@ -57,4 +57,7 @@ Para poner a prueba los endpoints, así como sus diferentes métodos, se empleo 
 Despues de seguir estos pasos, podrá visualizar la colección realizada en **Postman** con nombre **Ticket01-DanielSotelo**, que posee dos carpetas, la primera llamada Usuarios, que alberga las rutas relacionadas a los usuarios como registro, inicio de sesión, cambio de password, etc. La segunda caprpeta cuenta con las rutas para registrar un nuevo presupuesto, listar la información general de los presupuestos registrados, actualizar un presupuesto, cargar la información completa de un presupuesto solicitado, y desactivar los presupuestos asociados a un proyecto
 
 **Para porner a prueba las rutas**
-* Para comenzar es necesa
+* Para comenzar es necesario registrar un usuario con ayuda de la petición **POST Registro de usuarios** de la carpeta *Usuarios*, enviando en el body la información del usuario como un objeto JSON.
+* Una vez registrado un usuario, se debe realizar una petición de iniciar sesión con **POST Iniciar Sesión**, enviando de igual manera en el body un objeto JSON con el correo y la password del usuario registrado, esto nos brindará un token de autenticación que nos será de utilidad para realizar el resto de las peticiones.
+* La unica ruta que por el momento esta programada para que solo el administrador pueda acceder, es la petición **GET  Listar usuarios registrados**, ya que un usuario ordinario a pesar de ingresar un token de autenticación no podrá realizar la petición.
+* Cada petición de post y patch, ya cuenta con un body de ejemplo, se solicita seguir el orden de las peticiones como vienen indicadas
