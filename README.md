@@ -31,4 +31,14 @@ En el presente repositorio se encuentra el desarrollo backend que permita genera
 
         CREATE DATABASE ticket01
 
-git clone https://www.getpostman.com/collections/bbd7f4e652e288a2aa87
+* Paso 5. Después de crear la base de datos, solo resta inicializar el servidor, para ello nuevamente dirijase a la terminal de VISUAL STUDIO CODE e introduzca el comando:
+
+        >npm run dev
+
+Deberá esperar un breve momento hasta que en la terminal aparezcan los mensajes:
+
+        Executing (default): SELECT 1+1 AS result
+        Se establecio una conexión exitosa con la DB
+        El servidor se ha iniciado correctamente en http://localhost:3000
+
+https://www.getpostman.com/collections/bbd7f4e652e288a2aa87
