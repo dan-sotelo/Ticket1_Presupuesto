@@ -41,5 +41,16 @@ Deberá esperar un breve momento hasta que en la terminal aparezcan los mensajes
         Se establecio una conexión exitosa con la DB
         El servidor se ha iniciado correctamente en http://localhost:3000
 
+# Rutas
+Para poner a prueba los endpoints, así como sus diferentes métodos, se empleo la herramienta **Postman**. Para visulaizar la colección realizada, es necesario seguir los siguientes pasos: 
+* 1. Abrir **Postman**
+* 2. Dar click en **Collections**
+* 3. Dar click en el boton **Import**, que se ubica a un costado del boton New
+* 4. En la ventana que se abre, dar click en la pestaña **link**
+* 5. Ingresar la suguiente url:
 
-https://www.getpostman.com/collections/bbd7f4e652e288a2aa87
+        https://www.getpostman.com/collections/a46451db103e26da861c
+        
+* 6. Dar click al botón **continue**
+
+Despues de seguir estos pasos, podrá visualiar la colección realizada en **Postman** con nombre **Ticket01-DanielSotelo**
