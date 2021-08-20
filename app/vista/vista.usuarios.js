@@ -32,8 +32,8 @@ module.exports = async(app) => {
     })
 
     // Endpoint para cambiar la contraseña de usuario
-    app.patch('/usuarios/cambiar_password', async(req, res)=>{
-        let usuario = req.body
+    app.patch('/usuarios/cambiar_password', middUsuarios.validarUsuario, middUsuarios.validarAccesoUsuario, async(req, res)=>{
+        let usuario = req.body;
         try{
             let nuevaPassword = await controladorUsuarios.cambiarPassword(usuario);
             res.status(200).json({message: 'Actualización exitosa de password'});
@@ -44,7 +44,7 @@ module.exports = async(app) => {
     })
 
     // Endpoint solo para ver la lista de usuarios
-    app.get('/usuarios', middUsuarios.validarUsuario, middUsuarios.validarAccesoUsuario , async(req, res) =>{
+    app.get('/usuarios', middUsuarios.validarUsuario, middUsuarios.validarAdministrador , async(req, res) =>{
         try {
             let usuarios = await controladorUsuarios.listarUsuarios();
             res.status(200).json({message: 'Consulta exitosa', usuarios});
