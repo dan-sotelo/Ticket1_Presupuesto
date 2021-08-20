@@ -24,7 +24,8 @@ En el presente repositorio se encuentra el desarrollo backend que permita genera
 
     * Notas: 
         * El valor *DB_NAME* puede ser modificado a su gusto para nombrar una base de datos, asegurandose de no introducir espacios.
-        * El valor *DB_PORT* se especifico como 1433, debido a que el proyecto se trabajo con MSSQL como motor de base de datos, en caso de trabajar con un motor de base de datos diferente tendrá que modificar este valor, así como el del archivo *db.conexion.js* que se encuentra en la carpeta **db**, donde cambiara el valor de *dialect: 'mssql'* de acuerdo a su motor de base de datos.        
+        * El valor *DB_PORT* se es
+        * pecifico como 1433, debido a que el proyecto se trabajo con MSSQL como motor de base de datos, en caso de trabajar con un motor de base de datos diferente tendrá que modificar este valor, así como el del archivo *db.conexion.js* que se encuentra en la carpeta **db**, donde cambiara el valor de *dialect: 'mssql'* de acuerdo a su motor de base de datos.        
         * El valor *SECRET_KEY* puede ser modificado a su gusto, pero asegurese de introducir una password segura.
 
 * Paso 4. Una vez creado el archivo .ENV, deberá crear una base de datos con ayuda de su motor de base de datos, cuyo nombre debe ser el mismo que especifico en *DB_NAME*, por ejemplo, desde SQL introduzca la siguiente instrucción:
@@ -53,4 +54,7 @@ Para poner a prueba los endpoints, así como sus diferentes métodos, se empleo 
         
 * 6. Dar click al botón **continue**
 
-Despues de seguir estos pasos, podrá visualiar la colección realizada en **Postman** con nombre **Ticket01-DanielSotelo**
+Despues de seguir estos pasos, podrá visualizar la colección realizada en **Postman** con nombre **Ticket01-DanielSotelo**, que posee dos carpetas, la primera llamada Usuarios, que alberga las rutas relacionadas a los usuarios como registro, inicio de sesión, cambio de password, etc. La segunda caprpeta cuenta con las rutas para registrar un nuevo presupuesto, listar la información general de los presupuestos registrados, actualizar un presupuesto, cargar la información completa de un presupuesto solicitado, y desactivar los presupuestos asociados a un proyecto
+
+**Para porner a prueba las rutas**
+* Para comenzar es necesa
