@@ -3,12 +3,12 @@ En el presente repositorio se encuentra el desarrollo backend que permita genera
 
 * Paso 1. El primer paso consiste en clonar el presente repositorio, para ello, abra Visual Studio Code y seleccione la carpeta donde desee almacenar este repositorio, despúes abra la terminal de Visual Studio e introduzca los siguientes comandos:
 
-        > git init
-        > git clone https://github.com/dan-sotelo/Ticket1_Presupuesto.git
+        git init
+        git clone https://github.com/dan-sotelo/Ticket1_Presupuesto.git
 
 * Paso 2. Una vez que se ha clonado el repositorio, es necesario instalar los modulos empleados, para ello, es preciso introducir en la terminal el siguiente comando:
 
-        >npm install
+        npm install
     
 * Paso 3. Después de clonar los modulos, es tiempo de crear un archivo .ENV dentro de la carpeta *Ticket1_Presupuesto* al mismo nivel que el archivo app.js, dentro del archivo .ENV introduzca lo siguiente:
 
@@ -33,12 +33,13 @@ En el presente repositorio se encuentra el desarrollo backend que permita genera
 
 * Paso 5. Después de crear la base de datos, solo resta inicializar el servidor, para ello nuevamente dirijase a la terminal de VISUAL STUDIO CODE e introduzca el comando:
 
-        >npm run dev
+        npm run dev
 
 Deberá esperar un breve momento hasta que en la terminal aparezcan los mensajes:
 
         Executing (default): SELECT 1+1 AS result
         Se establecio una conexión exitosa con la DB
         El servidor se ha iniciado correctamente en http://localhost:3000
+
 
 https://www.getpostman.com/collections/bbd7f4e652e288a2aa87
