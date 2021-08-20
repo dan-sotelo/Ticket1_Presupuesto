@@ -22,7 +22,7 @@ En el presente repositorio se encuentra el desarrollo backend que permita genera
         DB_PASS = 'Introduzca la pasword registrada para acceder a su motor de base de datos'
         SECRET_KEY = 'iqX8L!!q@w1f'
 
-    Notas: 
+    * Notas: 
         * El valor *DB_NAME* puede ser modificado a su gusto para nombrar una base de datos, asegurandose de no introducir espacios.
         * El valor *DB_PORT* se especifico como 1433, debido a que el proyecto se trabajo con MSSQL como motor de base de datos, en caso de trabajar con un motor de base de datos diferente tendrá que modificar este valor, así como el del archivo *db.conexion.js* que se encuentra en la carpeta **db**, donde cambiara el valor de *dialect: 'mssql'* de acuerdo a su motor de base de datos.        
         * El valor *SECRET_KEY* puede ser modificado a su gusto, pero asegurese de introducir una password segura.
